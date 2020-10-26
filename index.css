@@ -92,6 +92,10 @@ b{
     #submit{
         padding: 2% 42%;
     }
+
+    .signup-input{
+        border: 2px grey !important;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -110,7 +114,7 @@ b{
     }
 
     .signup-input{
-        border: 2px, grey !important;
+        border: 2px grey !important;
     }
 }
 
