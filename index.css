@@ -48,7 +48,7 @@ b{
     #peko-video {
         padding-top: 10px;
         padding-right: 10%;
-        position: fixed;
+        position: static;
         max-width: 400px;
         max-height: 400px;
     }
@@ -98,6 +98,7 @@ b{
         margin-right: 30%;
         max-width: 500px;
         max-height: 500px;
+        position: static;
     }
 
     .info {
