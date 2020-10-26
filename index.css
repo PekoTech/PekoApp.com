@@ -41,6 +41,9 @@ b{
     border: 0px;
     box-shadow: 0px 5px 5px #00000025;
     appearance: none;
+    box-sizing:border-box;
+   -moz-box-sizing:border-box;
+   -webkit-box-sizing:border-box;
     padding: 2% 20%;
 }
 
@@ -104,6 +107,10 @@ b{
 
     .info {
         font-family: 'wigrumregular';
+    }
+
+    .signup-input{
+        border: 2px, grey !important;
     }
 }
 
