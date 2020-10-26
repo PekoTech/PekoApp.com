@@ -2,6 +2,11 @@ body{
   font-family: 'wigrumregular' !important; 
   font-weight:normal;
   font-style:normal; 
+  overflow: scroll !important;
+}
+
+html .page {
+    overflow: scroll;
 }
 
 .nav-link{
@@ -43,31 +48,47 @@ b{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #peko-video {
-        padding-top: 30px;
-        padding-right: 20%;
-        margin-right: 30%;
+        padding-top: 10px;
+        padding-right: 10%;
         position: fixed;
-        max-width: 425px;
-        max-height: 425px;
+        max-width: 400px;
+        max-height: 400px;
     }
 
     .info {
         font-family: 'wigrumregular';
+        margin: 0 2%;
     }
 
     #first_name{
-        padding: 2%;
-        margin-top: 20px;
+        padding: 2% 0 2% 2%;
+        margin-top: 10px;
     }
     
     #last_name{
-        padding: 2%;
-        margin-top: 20px;
+        padding: 2% 0 2% 2%;
+        margin-top: 10px;
     }
 
     #email{
-        padding: 2% 45% 2% 2%;
-        margin-top: 20px;
+        padding: 2% 50% 2% 2%;
+        margin-top: 10px;
+    }
+
+    h1{
+        font-size: 30px !important;
+    }
+
+    h4{
+        font-size: 21px !important;
+    }
+
+    p{
+        font-size: 16px !important; 
+    }
+
+    #submit{
+        padding: 2% 42%;
     }
 }
 
