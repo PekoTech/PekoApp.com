@@ -161,6 +161,10 @@ b{
     #email{
         padding: 2% 38% 2% 2%;
     }
+
+    #message{
+        margin-left: 230px;
+    }
 }
 
 /* FONTS */
