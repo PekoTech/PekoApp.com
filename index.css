@@ -43,8 +43,6 @@ b{
     padding: 2% 20%;
 }
 
-
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     #peko-video {
@@ -98,7 +96,6 @@ b{
         padding-top: 30px;
         padding-right: 20%;
         margin-right: 30%;
-        position: fixed;
         max-width: 500px;
         max-height: 500px;
     }
