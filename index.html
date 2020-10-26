@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Peko App</title>
-  </head>
-  <body>
-    <h1>Welcome to Peko!</h1>
-    <div>
-      <p>Please enter your email to sign up.</p>
-      <input id="email" type="text" />
-      <input id="first_name" type="text" />
-      <input id="last_name" type="text" />
-      <button id="submit" type="submit">Submit</button>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css">
+  <title>Peko App</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-light">
+    <a class="navbar-brand" href="#">
+      <img src="Assets/Peko_Logo.png" width="60" height="70" alt=""> Peko
+    </a>
+    <div id="navbarSupportedContent">
+      <a class="nav-link" href="#">Contact Us</a>
     </div>
-    <div id="message"></div>
-    <script src="./main.js"></script>
-  </body>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm info">
+        <div>
+          <h1><b>The <span class="green-highlight">Smartest</span> Pantry Management App.</b></h1>
+          <h4>Less waste. Less guilt.</h4>
+        </div>
+        <div class="signup">
+          <p><b>STAY IN THE KNOW.</b> Subscribe for release updates & beta testing.</p>
+          <input class="signup-input" id="first_name" type="text" placeholder="First Name" />
+          <input class="signup-input" id="last_name" type="text" placeholder="Last Name" />
+          <br>
+          <input class="signup-input" id="email" type="text" placeholder="Email Address" />
+          <br>
+          <button class="signup-input" id="submit" type="submit">Submit</button>
+        </div>
+      </div>
+      <div class="col-sm info-video">
+        <video autoplay muted loop id="peko-video">
+          <source src="Assets/peko-video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+  <div id="message"></div>
+  <script src="./main.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

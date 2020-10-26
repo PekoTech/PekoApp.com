@@ -1,0 +1,234 @@
+body{
+  font-family: 'wigrumregular' !important; 
+  font-weight:normal;
+  font-style:normal; 
+}
+
+.nav-link{
+    color: black;
+    font-size: 1.2em;
+}
+
+.nav-link::hover{
+    color: #00704A;
+}
+
+b{
+    font-family: 'wigrummedium';
+    font-weight: 500;
+    font-style:normal; 
+}
+
+.green-highlight{
+    color: #00704A;
+}
+
+#submit{
+    background-color: #00704A;
+    color: white;
+    border-radius: 30px;
+    border: 0px;
+    padding: 2% 31%;
+    margin-top: 15px;;
+}
+
+.signup-input{
+    border: 0px;
+    box-shadow: 0px 5px 5px #00000025;
+    padding: 2% 20%;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #peko-video {
+        padding-top: 30px;
+        padding-right: 20%;
+        margin-right: 30%;
+        position: fixed;
+        max-width: 425px;
+        max-height: 425px;
+    }
+
+    .info {
+        font-family: 'wigrumregular';
+    }
+
+    #first_name{
+        padding: 2%;
+        margin-top: 20px;
+    }
+    
+    #last_name{
+        padding: 2%;
+        margin-top: 20px;
+    }
+
+    #email{
+        padding: 2% 45% 2% 2%;
+        margin-top: 20px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #peko-video {
+        padding-top: 30px;
+        padding-right: 20%;
+        margin-right: 30%;
+        position: fixed;
+        max-width: 500px;
+        max-height: 500px;
+    }
+
+    .info {
+        font-family: 'wigrumregular';
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .info {
+        font-family: 'wigrumregular';
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .info {
+        font-family: 'wigrumregular';
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .info {
+        font-family: 'wigrumregular';
+        padding: 120px 5px 150px 5px;
+    }
+    
+    .signup {
+        padding-top: 5%;
+    }
+    
+    .signup-input {
+        margin-top: 8px;
+    }
+    
+    #peko-video {
+        padding-top: 80px;
+        padding-right: 20%;
+        padding-left: 5%;
+        position: fixed;
+        max-width: 1000px;
+        max-height: 1000px;
+    }
+    .container {
+        margin-left: 225px !important;
+        margin-right: 100px !important;
+    }
+
+    #first_name{
+        padding: 2%;
+    }
+    
+    #last_name{
+        padding: 2%;
+    }
+    
+    #email{
+        padding: 2% 38% 2% 2%;
+    }
+}
+
+/* FONTS */
+@font-face {
+    font-family: 'wigrumblack';
+    src: url('Assets/Wigrum\ Font/wigrum-black-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumblack_italic';
+    src: url('Assets/Wigrum\ Font/wigrum-blackitalic-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumbold';
+    src: url('Assets/Wigrum\ Font/wigrum-bold-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumbold_italic';
+    src: url('Assets/Wigrum\ Font/wigrum-bolditalic-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumitalic';
+    src: url('Assets/Wigrum\ Font/wigrum-italic-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumlight';
+    src: url('Assets/Wigrum\ Font/wigrum-light-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumlight_italic';
+    src: url('Assets/Wigrum\ Font/wigrum-lightitalic-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrummedium';
+    src: url('Assets/Wigrum\ Font/wigrum-medium-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrummedium_italic';
+    src: url('Assets/Wigrum\ Font/wigrum-mediumitalic-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'wigrumregular';
+    src: url('Assets/Wigrum\ Font/wigrum-regular-webfont.woff2') format('woff2'),
+         url('Assets/Wigrum\ Font/wigrum-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
