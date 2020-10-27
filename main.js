@@ -15,6 +15,8 @@ function submit() {
   ];
 
   message.innerText = "Loading...";
+  button.disabled = true;
+
   fetch(url, {
     method: "POST",
     headers: {
@@ -22,6 +24,7 @@ function submit() {
     },
     body: JSON.stringify({ email, first_name, last_name }),
   }).then((res) => {
+    button.disabled = false;
     if (res.ok) {
       message.innerText = "Thanks! We'll be in touch soon.";
     } else {
