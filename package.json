@@ -1,0 +1,14 @@
+{
+  "name": "peko-app-site",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/KeepFreshApp/PekoApp.com.git",
+  "author": "Narendra Syahrasyad <nanda.s@hey.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
+  "scripts": {
+    "serve": "http-server"
+  }
+}
