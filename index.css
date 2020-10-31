@@ -1,270 +1,179 @@
-body{
-  font-family: 'wigrumregular' !important; 
-  font-weight:normal;
-  font-style:normal; 
+body {
+  font-family: 'wigrumregular' !important;
+  font-weight: normal;
+  font-style: normal;
   overflow: scroll !important;
 }
 
 html .page {
-    overflow: scroll;
+  overflow: scroll;
 }
 
-.nav-link{
-    color: black;
-    font-size: 1.2em;
+.nav-link {
+  color: black;
+  font-size: 1.2em;
 }
 
-.nav-link::hover{
-    color: #00704A;
+.nav-link::hover {
+  color: #00704a;
 }
 
-b{
-    font-family: 'wigrummedium';
-    font-weight: 500;
-    font-style:normal; 
+b {
+  font-family: 'wigrummedium';
+  font-weight: 500;
+  font-style: normal;
 }
 
-.green-highlight{
-    color: #00704A;
+.green-highlight {
+  color: #00704a;
 }
 
-#submit{
-    background-color: #00704A;
-    color: white;
-    border-radius: 30px;
-    border: 0px;
-    padding: 2% 31%;
-    margin-top: 15px;;
+#submit {
+  background-color: #00704a;
+  color: white;
+  border-radius: 30px;
+  border: 0px;
+  padding: 2% 31%;
+  margin-top: 15px;
 }
 
-.signup-input{
-    border: 0px;
-    box-shadow: 0px 5px 5px #00000025;
-    appearance: none;
-    box-sizing:border-box;
-   -moz-box-sizing:border-box;
-   -webkit-box-sizing:border-box;
-   -webkit-appearance: none;
-    padding: 2% 20%;
+.signup-input {
+  border: 0px;
+  box-shadow: 0px 5px 5px #00000025;
+  appearance: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-appearance: none;
+  padding: 2% 20%;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    #peko-video {
-        padding-top: 10px;
-        padding-right: 10%;
-        position: static;
-        max-width: 400px;
-        max-height: 400px;
-    }
+  #peko-video {
+    padding-top: 10px;
+    padding-right: 10%;
+    position: static;
+    max-width: 400px;
+    max-height: 400px;
+  }
 
-    .info {
-        font-family: 'wigrumregular';
-        margin: 0 2%;
-    }
+  .info {
+    font-family: 'wigrumregular';
+    margin: 0 2%;
+  }
 
-    #first_name{
-        padding: 2% 0 2% 2%;
-        margin-top: 10px;
-    }
-    
-    #last_name{
-        padding: 2% 0 2% 2%;
-        margin-top: 10px;
-    }
+  #first_name {
+    padding: 2% 0 2% 2%;
+    margin-top: 10px;
+  }
 
-    #email{
-        padding: 2% 50% 2% 2%;
-        margin-top: 10px;
-    }
+  #last_name {
+    padding: 2% 0 2% 2%;
+    margin-top: 10px;
+  }
 
-    h1{
-        font-size: 30px !important;
-    }
+  #email {
+    padding: 2% 50% 2% 2%;
+    margin-top: 10px;
+  }
 
-    h4{
-        font-size: 21px !important;
-    }
+  h1 {
+    font-size: 30px !important;
+  }
 
-    p{
-        font-size: 16px !important; 
-    }
+  h4 {
+    font-size: 21px !important;
+  }
 
-    #submit{
-        padding: 2% 42%;
-    }
+  p {
+    font-size: 16px !important;
+  }
 
-    .signup-input{
-        border: 2px grey !important;
-    }
+  #submit {
+    padding: 2% 42%;
+  }
+
+  .signup-input {
+    border: 2px grey !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    #peko-video {
-        padding-top: 30px;
-        padding-right: 20%;
-        margin-right: 30%;
-        max-width: 500px;
-        max-height: 500px;
-        position: static;
-    }
+  #peko-video {
+    padding-top: 30px;
+    padding-right: 20%;
+    margin-right: 30%;
+    max-width: 500px;
+    max-height: 500px;
+    position: static;
+  }
 
-    .info {
-        font-family: 'wigrumregular';
-    }
+  .info {
+    font-family: 'wigrumregular';
+  }
 
-    .signup-input{
-        border: 2px grey !important;
-    }
+  .signup-input {
+    border: 2px grey !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .info {
-        font-family: 'wigrumregular';
-    }
+  .info {
+    font-family: 'wigrumregular';
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .info {
-        font-family: 'wigrumregular';
-    }
+  .info {
+    font-family: 'wigrumregular';
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .info {
-        font-family: 'wigrumregular';
-        padding: 120px 5px 150px 5px;
-    }
-    
-    .signup {
-        padding-top: 5%;
-    }
-    
-    .signup-input {
-        margin-top: 8px;
-    }
-    
-    #peko-video {
-        padding-top: 80px;
-        padding-right: 20%;
-        padding-left: 5%;
-        position: fixed;
-        max-width: 1000px;
-        max-height: 1000px;
-    }
-    .container {
-        margin-left: 225px !important;
-        margin-right: 100px !important;
-    }
-
-    #first_name{
-        padding: 2%;
-    }
-    
-    #last_name{
-        padding: 2%;
-    }
-    
-    #email{
-        padding: 2% 38% 2% 2%;
-    }
-
-    #message{
-        margin-left: 230px;
-    }
-}
-
-/* FONTS */
-@font-face {
-    font-family: 'wigrumblack';
-    src: url('Assets/Wigrum\ Font/wigrum-black-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumblack_italic';
-    src: url('Assets/Wigrum\ Font/wigrum-blackitalic-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-blackitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumbold';
-    src: url('Assets/Wigrum\ Font/wigrum-bold-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumbold_italic';
-    src: url('Assets/Wigrum\ Font/wigrum-bolditalic-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-bolditalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumitalic';
-    src: url('Assets/Wigrum\ Font/wigrum-italic-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumlight';
-    src: url('Assets/Wigrum\ Font/wigrum-light-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-light-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrumlight_italic';
-    src: url('Assets/Wigrum\ Font/wigrum-lightitalic-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrummedium';
-    src: url('Assets/Wigrum\ Font/wigrum-medium-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-medium-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'wigrummedium_italic';
-    src: url('Assets/Wigrum\ Font/wigrum-mediumitalic-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-mediumitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
+  .info {
     font-family: 'wigrumregular';
-    src: url('Assets/Wigrum\ Font/wigrum-regular-webfont.woff2') format('woff2'),
-         url('Assets/Wigrum\ Font/wigrum-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+    padding: 120px 5px 150px 5px;
+  }
 
+  .signup {
+    padding-top: 5%;
+  }
+
+  .signup-input {
+    margin-top: 8px;
+  }
+
+  #peko-video {
+    padding-top: 80px;
+    padding-right: 20%;
+    padding-left: 5%;
+    position: fixed;
+    max-width: 1000px;
+    max-height: 1000px;
+  }
+  .container {
+    margin-left: 225px !important;
+    margin-right: 100px !important;
+  }
+
+  #first_name {
+    padding: 2%;
+  }
+
+  #last_name {
+    padding: 2%;
+  }
+
+  #email {
+    padding: 2% 38% 2% 2%;
+  }
+
+  #message {
+    margin-left: 230px;
+  }
 }

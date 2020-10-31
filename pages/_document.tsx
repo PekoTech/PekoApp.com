@@ -15,7 +15,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link rel="icon" href="assets/Peko_Logo.png" />
+        </Head>
         <body>
           <Main />
           <NextScript />
