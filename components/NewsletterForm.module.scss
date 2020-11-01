@@ -1,0 +1,33 @@
+.input {
+  @apply p-4 rounded-lg mt-1;
+  width: 100%;
+  box-shadow: var(--shadow);
+  color: var(--color-text);
+}
+
+.submit {
+  @apply py-2 rounded-full;
+  background: var(--color-primary);
+  color: white;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.form {
+  grid-template-areas:
+    'first last'
+    'email email';
+  column-gap: 1rem;
+}
+
+.first {
+  grid-area: first;
+}
+
+.last {
+  grid-area: last;
+}
+
+.email {
+  grid-area: email;
+}

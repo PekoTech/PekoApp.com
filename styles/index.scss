@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './fonts.scss';
+
+body {
+  @apply text-gray-900;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  font-family: 'Wigrum', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+:root {
+  --color-primary: #00704a;
+  --color-background: #fff;
+  --color-text: #1a202c;
+  --shadow: 0px 5px 5px #00000025;
+}
+
+h1 {
+  line-height: 1.2;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
