@@ -1,3 +1,49 @@
+$lg: 1024px;
+$xl: 1280px;
+
 .highlight {
   color: var(--color-primary);
+}
+
+.main {
+  max-width: 40rem;
+  margin: 0 auto;
+
+  @media only screen and (min-width: $lg) {
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+.content {
+  @media only screen and (min-width: $lg) {
+    grid-template-areas:
+      'head video'
+      'form video';
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media only screen and (min-width: $xl) {
+    grid-template-columns: 2fr 3fr;
+    column-gap: 8rem;
+  }
+}
+
+.header {
+  grid-area: head;
+}
+
+.video {
+  grid-area: video;
+  display: flex;
+  align-items: center;
+}
+
+.form {
+  grid-area: form;
 }

@@ -20,8 +20,8 @@ export default function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className={clsx(styles.form, 'lg:grid')}>
+      <label className={styles.first}>
         First Name
         <input
           className={clsx(styles.input, 'mb-4')}
@@ -33,7 +33,7 @@ export default function NewsletterForm() {
           onChange={handleChange}
         />
       </label>
-      <label>
+      <label className={styles.last}>
         Last Name
         <input
           className={clsx(styles.input, 'mb-4')}
@@ -45,7 +45,7 @@ export default function NewsletterForm() {
           onChange={handleChange}
         />
       </label>
-      <label>
+      <label className={styles.email}>
         Email
         <input
           className={styles.input}
@@ -57,7 +57,10 @@ export default function NewsletterForm() {
           onChange={handleChange}
         />
       </label>
-      <button className={clsx(styles.submit, 'mt-6')} type="submit">
+      <button
+        className={clsx(styles.submit, 'mt-6 lg:col-span-2')}
+        type="submit"
+      >
         Submit
       </button>
     </form>

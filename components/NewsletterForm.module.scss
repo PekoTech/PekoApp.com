@@ -12,3 +12,22 @@
   width: 100%;
   box-shadow: var(--shadow);
 }
+
+.form {
+  grid-template-areas:
+    'first last'
+    'email email';
+  column-gap: 1rem;
+}
+
+.first {
+  grid-area: first;
+}
+
+.last {
+  grid-area: last;
+}
+
+.email {
+  grid-area: email;
+}
