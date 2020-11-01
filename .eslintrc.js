@@ -27,6 +27,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    // Next passes href attributes to anchors if using next/link
+    'jsx-a11y/anchor-is-valid': 'off',
   },
   settings: {
     react: {

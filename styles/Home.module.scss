@@ -1,0 +1,17 @@
+.highlight {
+  color: var(--color-primary);
+}
+
+.input {
+  @apply p-4 rounded-lg;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+.submit {
+  @apply py-2 rounded-full;
+  background: var(--color-primary);
+  color: white;
+  width: 100%;
+  box-shadow: var(--shadow);
+}
