@@ -17,7 +17,7 @@ export default function Home() {
           'p-6 lg:px-16 lg:py-8 lg:flex lg:items-center'
         )}
       >
-        <nav className="flex items-center justify-between text-lg md:text-xl lg:p-6 lg:px-16 lg:py-8 lg:fixed lg:top-0 lg:left-0 lg:w-full ">
+        <nav className="flex items-center justify-between text-lg md:text-xl lg:p-6 lg:px-16 lg:py-8 lg:fixed lg:top-0 lg:left-0 lg:w-full">
           <Link href="/">
             <a className="flex items-center -ml-2">
               <img
