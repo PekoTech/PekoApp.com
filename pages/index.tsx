@@ -3,7 +3,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import styles from '../styles/Home.module.scss'
-import NewsletterForm from '../components/NewsletterForm'
+import { NewsletterForm } from '../components'
 
 export default function Home() {
   return (
