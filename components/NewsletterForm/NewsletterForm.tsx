@@ -92,7 +92,9 @@ export default function NewsletterForm() {
           />
         </label>
         {state === FormState.Loading ? (
-          <ClipLoader size={35} color={'#00704a'} />
+          <div className={clsx(styles.loader, 'mt-6 lg:col-span-2')}>
+            <ClipLoader size={35} color={'#00704a'} />
+          </div>
         ) : (
           <button
             className={clsx(styles.submit, 'mt-6 lg:col-span-2')}
