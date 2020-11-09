@@ -91,18 +91,16 @@ export default function NewsletterForm() {
             onChange={handleChange}
           />
         </label>
-        {state === FormState.Loading ? (
-          <div className={clsx(styles.loader, 'mt-6 lg:col-span-2')}>
-            <ClipLoader size={35} color={'#00704a'} />
-          </div>
-        ) : (
-          <button
-            className={clsx(styles.submit, 'mt-6 lg:col-span-2')}
-            type="submit"
-          >
-            Submit
-          </button>
-        )}
+        <button
+          className={clsx(styles.submit, 'mt-6 lg:col-span-2')}
+          type="submit"
+        >
+          {state === FormState.Loading ? (
+            <ClipLoader size={25} color={'#ffffff'} />
+          ) : (
+            'Submit'
+          )}
+        </button>
       </form>
       <div>
         <Message state={state} error={error} />
