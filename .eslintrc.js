@@ -29,6 +29,13 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 'off',
     // Next passes href attributes to anchors if using next/link
     'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        controlComponents: ['Input'],
+        depth: 3,
+      },
+    ],
   },
   settings: {
     react: {
