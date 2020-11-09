@@ -1,9 +1,12 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
-import clsx from 'clsx'
+import { useState, ChangeEvent, FormEvent, FocusEvent } from 'react'
+import clsx, { ClassValue } from 'clsx'
 
 import styles from './NewsletterForm.module.scss'
 
 const MailUrl = 'https://peko-egg-email.herokuapp.com/'
+
+// eslint-disable-next-line no-useless-escape
+const IsEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 enum FormState {
   Done,
@@ -54,39 +57,47 @@ export default function NewsletterForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className={clsx(styles.form, 'lg:grid')}>
-        <label className={styles.first}>
+        <label className={clsx(styles.first, 'mb-4')}>
           First Name
-          <input
-            className={clsx(styles.input, 'mb-4')}
+          <Input
             id="first_name"
             name="first_name"
             type="text"
             placeholder="John"
             value={form.first_name}
+            validator={(value) => value.length > 0}
+            message="First name is required"
             onChange={handleChange}
           />
         </label>
-        <label className={styles.last}>
+        <label className={clsx(styles.last, 'mb-4')}>
           Last Name
-          <input
-            className={clsx(styles.input, 'mb-4')}
+          <Input
             id="last_name"
             name="last_name"
             type="text"
             placeholder="Smith"
             value={form.last_name}
+            validator={(value) => value.length > 0}
+            message="Last name is required"
             onChange={handleChange}
           />
         </label>
         <label className={styles.email}>
           Email
-          <input
+          <Input
             className={styles.input}
             id="email"
             name="email"
             type="email"
             placeholder="john@example.com"
             value={form.email}
+            validator={(value) => value.length > 0 && IsEmail.test(value)}
+            message={(value) =>
+              value.length > 0
+                ? 'Please enter a valid email'
+                : 'Email is required'
+            }
             onChange={handleChange}
           />
         </label>
@@ -103,6 +114,8 @@ export default function NewsletterForm() {
     </>
   )
 }
+
+// --
 
 type MessageProps = {
   state: FormState
@@ -125,4 +138,56 @@ function Message({ state, error }: MessageProps) {
       return null
   }
   return <p>{message}</p>
+}
+
+// --
+
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  message: string | ((value: string) => string)
+  validator: (value: string) => boolean
+  className?: ClassValue | ClassValue[]
+}
+
+function Input({
+  className = '',
+  message,
+  value,
+  validator,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onBlur = () => {},
+  ...props
+}: InputProps) {
+  const [wasFocused, setWasFocused] = useState(false)
+
+  const isValid = !wasFocused || validator(String(value))
+  const classes = Array.isArray(className) ? className : [className]
+
+  const handleBlur = (evt: FocusEvent<HTMLInputElement>) => {
+    if (!wasFocused) {
+      setWasFocused(true)
+    }
+    onBlur(evt)
+  }
+
+  return (
+    <>
+      <input
+        className={clsx(
+          styles.input,
+          { [styles.invalid]: !isValid },
+          ...classes
+        )}
+        onBlur={handleBlur}
+        {...props}
+      />
+      {!isValid && (
+        <small className={styles.error}>
+          {typeof message === 'function' ? message(String(value)) : message}
+        </small>
+      )}
+    </>
+  )
 }
