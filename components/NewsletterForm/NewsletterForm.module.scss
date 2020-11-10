@@ -26,6 +26,11 @@
   box-shadow: var(--shadow);
 }
 
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .form {
   grid-template-areas:
     'first last'
