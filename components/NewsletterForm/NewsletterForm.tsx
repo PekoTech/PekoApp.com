@@ -1,5 +1,6 @@
 import { useState, ChangeEvent, FormEvent, FocusEvent } from 'react'
 import clsx, { ClassValue } from 'clsx'
+import ClipLoader from 'react-spinners/ClipLoader'
 
 import styles from './NewsletterForm.module.scss'
 
@@ -116,7 +117,11 @@ export default function NewsletterForm() {
           })}
           type="submit"
         >
-          Submit
+          {state === FormState.Loading ? (
+            <ClipLoader size={25} color={'#ffffff'} />
+          ) : (
+            'Submit'
+          )}
         </button>
       </form>
       <div>
@@ -145,9 +150,6 @@ function Message({ state, error }: MessageProps) {
   switch (state) {
     case FormState.Error:
       message = `Something went wrong while saving your profile. ${error.status}: ${error.message}`
-      break
-    case FormState.Loading:
-      message = 'Loading...'
       break
     case FormState.Done:
       message = "Thanks! We'll be in touch soon."
