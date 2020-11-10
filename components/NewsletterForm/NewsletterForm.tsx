@@ -22,10 +22,16 @@ type ApiError = {
   message: string
 }
 
+type User = {
+  first_name: string
+  last_name: string
+  email: string
+}
+
 export default function NewsletterForm() {
   const [state, setFormState] = useState<FormState>(FormState.Idle)
   const [error, setError] = useState<ApiError | null>(null)
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<User>({
     first_name: '',
     last_name: '',
     email: '',
@@ -54,6 +60,8 @@ export default function NewsletterForm() {
       }
     })
   }
+
+  const isButtonDisabled = !canSubmit(form)
 
   return (
     <>
@@ -103,7 +111,10 @@ export default function NewsletterForm() {
           />
         </label>
         <button
-          className={clsx(styles.submit, 'mt-6 lg:col-span-2')}
+          disabled={isButtonDisabled || state === FormState.Loading}
+          className={clsx(styles.submit, 'mt-6 lg:col-span-2', {
+            [styles.disabled]: isButtonDisabled,
+          })}
           type="submit"
         >
           {state === FormState.Loading ? (
@@ -118,6 +129,13 @@ export default function NewsletterForm() {
       </div>
     </>
   )
+}
+
+function canSubmit({ first_name, last_name, email }: User) {
+  const isFirstNameValid = first_name.length > 0
+  const isLastNameValid = last_name.length > 0
+  const isEmailValid = email.length > 0 && IsEmail.test(email)
+  return isFirstNameValid && isLastNameValid && isEmailValid
 }
 
 // --
