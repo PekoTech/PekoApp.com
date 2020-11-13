@@ -1,7 +1,10 @@
-import { Pool } from 'pg'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export const pool = new Pool()
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import pg = require('pg')
+
+export const pool = new pg.Pool()
 
 export default async function subscribe(
   req: NextApiRequest,
