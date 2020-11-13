@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import clsx from 'clsx'
 
 import styles from '../styles/Home.module.scss'
-import { NewsletterForm } from '../components'
+import { NewsletterForm, Layout, Content } from '../components'
 
 export default function Home() {
   return (
@@ -11,28 +10,8 @@ export default function Home() {
       <Head>
         <title>Peko App</title>
       </Head>
-      <main
-        className={clsx(
-          styles.main,
-          'p-6 flex-col lg:px-16 lg:py-8 lg:flex lg:items-center'
-        )}
-      >
-        <nav className="bg-white flex items-center justify-between text-lg md:text-xl lg:w-full">
-          <Link href="/">
-            <a className="flex items-center -ml-2">
-              <img
-                className="w-12 mr-2"
-                src="assets/Peko_Logo.png"
-                alt="Peko logo"
-              />
-              <span>Peko</span>
-            </a>
-          </Link>
-          <a href="mailto:pekoapp@gmail.com">Contact Us</a>
-        </nav>
-        <section
-          className={clsx(styles.content, 'mt-6 md:mt-20 lg:grid lg:mt-12')}
-        >
+      <Layout>
+        <Content className={styles.content}>
           <header className={clsx(styles.header, 'lg:mb-12')}>
             <h1 className="font-bold text-3xl mb-2 lg:text-4xl">
               The <span className={styles.highlight}>Smartest</span> Pantry
@@ -52,8 +31,8 @@ export default function Home() {
             </header>
             <NewsletterForm />
           </section>
-        </section>
-      </main>
+        </Content>
+      </Layout>
     </>
   )
 }
