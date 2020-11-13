@@ -4,7 +4,7 @@ import ClipLoader from 'react-spinners/ClipLoader'
 
 import styles from './NewsletterForm.module.scss'
 
-const MailUrl = 'https://peko-egg-email.herokuapp.com/'
+const MailUrl = '/api/mail'
 
 // eslint-disable-next-line no-useless-escape
 const IsEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
