@@ -14,10 +14,10 @@ export default function Home() {
       <main
         className={clsx(
           styles.main,
-          'p-6 lg:px-16 lg:py-8 lg:flex lg:items-center'
+          'p-6 flex-col lg:px-16 lg:py-8 lg:flex lg:items-center'
         )}
       >
-        <nav className="flex items-center justify-between text-lg md:text-xl lg:p-6 lg:px-16 lg:py-8 lg:fixed lg:top-0 lg:left-0 lg:w-full">
+        <nav className="bg-white flex items-center justify-between text-lg md:text-xl lg:w-full">
           <Link href="/">
             <a className="flex items-center -ml-2">
               <img
@@ -31,7 +31,7 @@ export default function Home() {
           <a href="mailto:pekoapp@gmail.com">Contact Us</a>
         </nav>
         <section
-          className={clsx(styles.content, 'mt-6 md:mt-20 lg:grid lg:mt-0')}
+          className={clsx(styles.content, 'mt-6 md:mt-20 lg:grid lg:mt-12')}
         >
           <header className={clsx(styles.header, 'lg:mb-12')}>
             <h1 className="font-bold text-3xl mb-2 lg:text-4xl">
