@@ -124,7 +124,7 @@ export default function NewsletterForm() {
           )}
         </button>
       </form>
-      <div>
+      <div className="text-center mt-4">
         <Message state={state} error={error} />
       </div>
     </>
