@@ -1,0 +1,12 @@
+$lg: 1024px;
+
+.main {
+  max-width: 40rem;
+  margin: 0 auto;
+
+  @media only screen and (min-width: $lg) {
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+  }
+}

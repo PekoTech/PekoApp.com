@@ -5,17 +5,6 @@ $xl: 1280px;
   color: var(--color-primary);
 }
 
-.main {
-  max-width: 40rem;
-  margin: 0 auto;
-
-  @media only screen and (min-width: $lg) {
-    height: 100vh;
-    max-width: none;
-    margin: 0;
-  }
-}
-
 .content {
   @media only screen and (min-width: $lg) {
     grid-template-areas:
