@@ -1,8 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import pg = require('pg')
+import pg from 'pg'
 
 export const pool = new pg.Pool()
 
