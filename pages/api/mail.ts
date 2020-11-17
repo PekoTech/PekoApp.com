@@ -16,7 +16,7 @@ export default async function subscribe(
         [email, first_name, last_name]
       )
       console.log('after insert')
-      return res.status(204).send('')
+      return res.status(204).send({ message: 'Thanks!' })
     }
   } catch (error) {
     return res.status(400).send({ error })
