@@ -10,10 +10,12 @@ export default async function subscribe(
   try {
     if (req.method === 'POST') {
       const { email, first_name, last_name } = req.body
+      console.log('before insert')
       await pool.query(
         'INSERT INTO leads(email, first_name, last_name) VALUES($1, $2, $3)',
         [email, first_name, last_name]
       )
+      console.log('after insert')
       return res.status(204).send('')
     }
   } catch (error) {
