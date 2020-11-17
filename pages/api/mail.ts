@@ -1,14 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import pg from 'pg'
 
-export const pool = new pg.Pool()
-
 export default async function subscribe(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
     if (req.method === 'POST') {
+      const pool = new pg.Pool()
       const { email, first_name, last_name } = req.body
       console.log('before insert')
       await pool.query(
