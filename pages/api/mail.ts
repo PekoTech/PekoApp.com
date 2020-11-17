@@ -9,12 +9,10 @@ export default async function subscribe(
     if (req.method === 'POST') {
       const pool = new pg.Pool()
       const { email, first_name, last_name } = req.body
-      console.log('before insert')
       await pool.query(
         'INSERT INTO leads(email, first_name, last_name) VALUES($1, $2, $3)',
         [email, first_name, last_name]
       )
-      console.log('after insert')
       await pool.end()
       return res.status(204).send({ message: 'Thanks!' })
     }
