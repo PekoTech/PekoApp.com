@@ -16,6 +16,7 @@ export default async function subscribe(
         [email, first_name, last_name]
       )
       console.log('after insert')
+      await pool.end()
       return res.status(204).send({ message: 'Thanks!' })
     }
   } catch (error) {
