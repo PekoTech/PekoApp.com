@@ -27,7 +27,7 @@ export default function Home() {
           <section className={clsx(styles.form, 'mb-12')}>
             <header className="mb-4 lg:mb-8">
               <h1 className="font-bold mb-1">STAY IN THE KNOW.</h1>
-              <p>Subsribe for release updates and beta testing.</p>
+              <p>Subscribe for release updates and beta testing.</p>
             </header>
             <NewsletterForm />
           </section>
