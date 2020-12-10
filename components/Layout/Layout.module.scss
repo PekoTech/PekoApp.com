@@ -5,7 +5,7 @@ $lg: 1024px;
   margin: 0 auto;
 
   @media only screen and (min-width: $lg) {
-    height: 100vh;
+    min-height: 100vh;
     max-width: none;
     margin: 0;
   }

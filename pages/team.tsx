@@ -1,7 +1,9 @@
+import { useState } from 'react'
+import clsx from 'clsx'
 import Head from 'next/head'
 
 import { Layout, Content } from '../components'
-import { useState } from 'react'
+import styles from '../styles/Team.module.scss'
 
 const TeamMembers = [
   {
@@ -28,6 +30,14 @@ const TeamMembers = [
     name: 'Andrew Zulaybar',
     title: 'Software Engineer',
   },
+  {
+    name: 'Li Ze Choo',
+    title: 'Technical Project Manager',
+  },
+  {
+    name: 'Kyle Mas',
+    title: 'Software Engineer',
+  },
 ] as const
 
 export default function Team() {
@@ -37,14 +47,16 @@ export default function Team() {
         <title>Peko Team</title>
       </Head>
       <Layout>
-        <Content>
+        <Content className="md:mt-8">
           <header className="text-center mb-8 md:mb-16">
             <h1 className="text-xl font-medium mb-2 md:text-3xl">The Team</h1>
             <p className="text-sm">
               Just a bunch of hungry, weird pals looking to help planet earth.
             </p>
           </header>
-          <ul className="grid grid-cols-2 gap-4 pb-8 md:grid-cols-3">
+          <ul
+            className={clsx(styles.avatar_list, 'grid grid-cols-2 gap-4 pb-8')}
+          >
             {TeamMembers.map((member) => (
               <Avatar key={member.name} member={member} />
             ))}
@@ -68,6 +80,7 @@ function Avatar({ member }) {
       onMouseOut={() => hover && setHover(false)}
     >
       <div
+        role="img"
         style={{
           backgroundImage: `url(${path}.JPG)`,
           display: hover ? 'none' : 'block',
@@ -75,6 +88,7 @@ function Avatar({ member }) {
         className="w-32 h-32 bg-gray-500 rounded-full mb-4 md:w-40 md:h-40 bg-cover bg-center"
       />
       <div
+        role="img"
         style={{
           backgroundImage: `url(${path}_alt.JPG)`,
           display: hover ? 'block' : 'none',

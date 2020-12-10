@@ -11,7 +11,7 @@ export default function Home() {
         <title>Peko App</title>
       </Head>
       <Layout>
-        <Content className={styles.content}>
+        <Content className={[styles.content, 'md:mt-24']}>
           <header className={clsx(styles.header, 'lg:mb-12')}>
             <h1 className="font-bold text-3xl mb-2 lg:text-4xl">
               The <span className={styles.highlight}>Smartest</span> Pantry

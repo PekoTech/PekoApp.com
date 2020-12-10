@@ -8,7 +8,7 @@ export default function Layout({ children }) {
     <main
       className={clsx(
         styles.main,
-        'p-6 flex-col lg:px-16 lg:py-8 lg:flex lg:items-center'
+        'p-6 flex-col lg:px-16 lg:pt-8 lg:pb-16 lg:flex lg:items-center'
       )}
     >
       <nav className="bg-white flex items-center justify-between text-lg md:text-xl lg:w-full">
