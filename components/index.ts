@@ -1,3 +1,5 @@
 export { default as NewsletterForm } from './NewsletterForm/NewsletterForm'
 export { default as Layout } from './Layout/Layout'
 export { default as Content } from './Content'
+export { default as Input } from './Input/Input'
+export { default as Button } from './Button/Button'

@@ -1,41 +1,18 @@
-.input {
-  @apply p-4 rounded-lg mt-1 border-2 border-transparent;
-  width: 100%;
-  box-shadow: var(--shadow);
-  color: var(--color-text);
-
-  &:focus {
-    @apply border-blue-500;
-    outline: none;
-  }
-}
-
-.invalid {
-  @apply border-red-500;
-}
-
-.error {
-  @apply text-red-500;
-}
-
-.submit {
-  @apply py-2 rounded-full;
-  background: var(--color-primary);
-  color: white;
-  width: 100%;
-  box-shadow: var(--shadow);
-}
-
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 .form {
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     'first last'
     'email email';
   column-gap: 1rem;
+
+  label {
+    display: block;
+  }
 }
 
 .first {

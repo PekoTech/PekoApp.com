@@ -1,0 +1,6 @@
+.primary {
+  @apply py-2 rounded-full;
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow);
+}

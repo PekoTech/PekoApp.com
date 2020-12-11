@@ -1,13 +1,12 @@
-import { useState, ChangeEvent, FormEvent, FocusEvent } from 'react'
-import clsx, { ClassValue } from 'clsx'
+import { useState } from 'react'
+import clsx from 'clsx'
 import ClipLoader from 'react-spinners/ClipLoader'
+import { Form, Formik } from 'formik'
+import * as Yup from 'yup'
 
 import styles from './NewsletterForm.module.scss'
-
-const MailUrl = '/api/mail'
-
-// eslint-disable-next-line no-useless-escape
-const IsEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+import { Input, Button } from '../index'
+import { api, ApiError, User } from '../../lib/api'
 
 enum FormState {
   Done,
@@ -17,125 +16,80 @@ enum FormState {
   Loading,
 }
 
-type ApiError = {
-  status: number
-  message: string
-}
-
-type User = {
-  first_name: string
-  last_name: string
-  email: string
-}
+const signupSchema = Yup.object().shape({
+  first_name: Yup.string().required('First name is required'),
+  last_name: Yup.string().required('Last name is required'),
+  email: Yup.string()
+    .email('Please enter a valid email')
+    .required('Email is required'),
+})
 
 export default function NewsletterForm() {
   const [state, setFormState] = useState<FormState>(FormState.Idle)
-  const [error, setError] = useState<ApiError | null>(null)
-  const [form, setForm] = useState<User>({
-    first_name: '',
-    last_name: '',
-    email: '',
-  })
+  const [error, setError] = useState<ApiError>({} as ApiError)
 
-  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [evt.target.name]: evt.target.value })
-  }
-
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault()
-
+  const handleSubmit = (user: User) => {
     setFormState(FormState.Loading)
-    fetch(MailUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form),
-    }).then((res) => {
-      if (res.ok) {
-        setFormState(FormState.Done)
-      } else {
+    api
+      .signup(user)
+      .then(() => setFormState(FormState.Done))
+      .catch((res) => {
         setFormState(FormState.Error)
-        setError({ status: res.status, message: res.statusText })
-      }
-    })
+        setError({ status: res.status, message: res.error })
+      })
   }
-
-  const isButtonDisabled = !canSubmit(form)
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={clsx(styles.form, 'lg:grid')}>
-        <label className={clsx(styles.first, 'mb-4')}>
-          First Name
-          <Input
-            id="first_name"
-            name="first_name"
-            type="text"
-            placeholder="John"
-            value={form.first_name}
-            validator={(value) => value.length > 0}
-            message="First name is required"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={clsx(styles.last, 'mb-4')}>
-          Last Name
-          <Input
-            id="last_name"
-            name="last_name"
-            type="text"
-            placeholder="Smith"
-            value={form.last_name}
-            validator={(value) => value.length > 0}
-            message="Last name is required"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.email}>
-          Email
-          <Input
-            className={styles.input}
-            id="email"
-            name="email"
-            type="email"
-            placeholder="john@example.com"
-            value={form.email}
-            validator={(value) => value.length > 0 && IsEmail.test(value)}
-            message={(value) =>
-              value.length > 0
-                ? 'Please enter a valid email'
-                : 'Email is required'
-            }
-            onChange={handleChange}
-          />
-        </label>
-        <button
-          disabled={isButtonDisabled || state === FormState.Loading}
-          className={clsx(styles.submit, 'mt-6 lg:col-span-2', {
-            [styles.disabled]: isButtonDisabled,
-          })}
-          type="submit"
-        >
-          {state === FormState.Loading ? (
-            <ClipLoader size={25} color={'#ffffff'} />
-          ) : (
-            'Submit'
-          )}
-        </button>
-      </form>
+      <Formik
+        initialValues={{
+          first_name: '',
+          last_name: '',
+          email: '',
+        }}
+        validationSchema={signupSchema}
+        onSubmit={handleSubmit}
+      >
+        {(props) => (
+          <Form className={clsx(styles.form, 'lg:grid')}>
+            <label className={clsx(styles.first)}>
+              First Name
+              <Input name="first_name" type="text" placeholder="John" />
+            </label>
+            <label className={clsx(styles.last)}>
+              Last Name
+              <Input name="last_name" type="text" placeholder="Smith" />
+            </label>
+            <label className={styles.email}>
+              Email
+              <Input
+                className={styles.input}
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+              />
+            </label>
+            <Button
+              disabled={!props.isValid || state === FormState.Loading}
+              className={clsx('w-full mt-2 lg:col-span-2', {
+                [styles.disabled]: !props.isValid,
+              })}
+              type="submit"
+            >
+              {state === FormState.Loading ? (
+                <ClipLoader size={25} color={'#ffffff'} />
+              ) : (
+                'Submit'
+              )}
+            </Button>
+          </Form>
+        )}
+      </Formik>
       <div className="text-center mt-4">
         <Message state={state} error={error} />
       </div>
     </>
   )
-}
-
-function canSubmit({ first_name, last_name, email }: User) {
-  const isFirstNameValid = first_name.length > 0
-  const isLastNameValid = last_name.length > 0
-  const isEmailValid = email.length > 0 && IsEmail.test(email)
-  return isFirstNameValid && isLastNameValid && isEmailValid
 }
 
 // --
@@ -158,56 +112,4 @@ function Message({ state, error }: MessageProps) {
       return null
   }
   return <p>{message}</p>
-}
-
-// --
-
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
-  message: string | ((value: string) => string)
-  validator: (value: string) => boolean
-  className?: ClassValue | ClassValue[]
-}
-
-function Input({
-  className = '',
-  message,
-  value,
-  validator,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onBlur = () => {},
-  ...props
-}: InputProps) {
-  const [wasFocused, setWasFocused] = useState(false)
-
-  const isValid = !wasFocused || validator(String(value))
-  const classes = Array.isArray(className) ? className : [className]
-
-  const handleBlur = (evt: FocusEvent<HTMLInputElement>) => {
-    if (!wasFocused) {
-      setWasFocused(true)
-    }
-    onBlur(evt)
-  }
-
-  return (
-    <>
-      <input
-        className={clsx(
-          styles.input,
-          { [styles.invalid]: !isValid },
-          ...classes
-        )}
-        onBlur={handleBlur}
-        {...props}
-      />
-      {!isValid && (
-        <small className={styles.error}>
-          {typeof message === 'function' ? message(String(value)) : message}
-        </small>
-      )}
-    </>
-  )
 }

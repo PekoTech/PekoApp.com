@@ -27,7 +27,7 @@ export default function Layout({ children }) {
             <Link href="/team">The Team</Link>
           </li>
           <li>
-            <a href="mailto:pekoapp@gmail.com">Contact Us</a>
+            <Link href="/contact">Contact Us</Link>
           </li>
         </ul>
       </nav>

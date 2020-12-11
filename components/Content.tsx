@@ -5,7 +5,7 @@ export default function Content({
   children,
   className = '',
 }: {
-  className: ClassValue
+  className?: ClassValue
   children: React.ReactNode
 }) {
   return (
