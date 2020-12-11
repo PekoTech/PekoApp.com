@@ -15,7 +15,7 @@ export type ContactMessage = {
   message: string
 }
 
-const fetch = (...args: Parameters<Window['fetch']>) => {
+const request = (...args: Parameters<Window['fetch']>) => {
   return new Promise((resolve, reject) =>
     window.fetch(...args).then((res) => {
       return res.json().then((data) => {
@@ -31,7 +31,7 @@ const fetch = (...args: Parameters<Window['fetch']>) => {
 
 export const api = {
   signup(user: User) {
-    return fetch(`/api/mail`, {
+    return request(`/api/mail`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const api = {
     })
   },
   contact(info: ContactMessage) {
-    return fetch(`/api/contact`, {
+    return request(`/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

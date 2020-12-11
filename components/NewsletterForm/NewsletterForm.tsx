@@ -26,16 +26,16 @@ const signupSchema = Yup.object().shape({
 
 export default function NewsletterForm() {
   const [state, setFormState] = useState<FormState>(FormState.Idle)
-  const [error, setError] = useState<ApiError | null>(null)
+  const [error, setError] = useState<ApiError>({} as ApiError)
 
   const handleSubmit = (user: User) => {
     setFormState(FormState.Loading)
     api
       .signup(user)
       .then(() => setFormState(FormState.Done))
-      .catch(({ status, error }) => {
+      .catch((res) => {
         setFormState(FormState.Error)
-        setError({ status, message: error })
+        setError({ status: res.status, message: res.error })
       })
   }
 

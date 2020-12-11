@@ -10,7 +10,7 @@ import styles from '../styles/Contact.module.scss'
 import { ClipLoader } from 'react-spinners'
 
 const contactSchema = yup.object().shape({
-  firstName: yup.string().required('Please enter your first name'),
+  first_name: yup.string().required('Please enter your first name'),
   email: yup
     .string()
     .email('Please enter a valid email')
@@ -31,11 +31,13 @@ export default function Contact() {
   const [error, setError] = useState<ApiError | null>(null)
 
   const handleSubmit = (info: ContactMessage) => {
+    console.log(info)
     setFormState(FormState.Loading)
     api
       .contact(info)
       .then(() => setFormState(FormState.Done))
       .catch(({ status, error }) => {
+        console.log(status, error)
         setFormState(FormState.Error)
         setError({ status, message: error })
       })
@@ -75,16 +77,19 @@ export default function Contact() {
               Email
               <Input name="email" type="email" placeholder="john@example.com" />
             </label>
-            <label className={clsx(styles.message, 'h-full flex flex-col')}>
+            <label
+              htmlFor="message"
+              className={clsx(styles.message, 'h-full flex flex-col')}
+            >
               Message
-              <Input
-                className="h-full"
-                name="message"
-                as="textarea"
-                placeholder="Something awesome!"
-              />
             </label>
-            <Button className={styles.submit}>
+            <Input
+              className="h-full"
+              name="message"
+              as="textarea"
+              placeholder="Something awesome!"
+            />
+            <Button className={styles.submit} type="submit">
               {state === FormState.Loading ? (
                 <ClipLoader size={25} color={'#ffffff'} />
               ) : (
@@ -109,6 +114,7 @@ type MessageProps = {
 }
 
 function Message({ state, error }: MessageProps) {
+  console.log(error)
   let message = ''
   switch (state) {
     case FormState.Error:
