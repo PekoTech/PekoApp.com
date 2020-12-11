@@ -2,7 +2,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import Head from 'next/head'
 
-import { Layout, Content } from '../components'
+import { Content } from '../components'
 import styles from '../styles/Team.module.scss'
 
 const TeamMembers = [
@@ -54,23 +54,19 @@ export default function Team() {
       <Head>
         <title>Peko Team</title>
       </Head>
-      <Layout>
-        <Content className="md:mt-8">
-          <header className="text-center mb-8 md:mb-16">
-            <h1 className="text-xl font-medium mb-2 md:text-3xl">The Team</h1>
-            <p className="text-sm">
-              Just a bunch of hungry, weird pals looking to help planet earth.
-            </p>
-          </header>
-          <ul
-            className={clsx(styles.avatar_list, 'grid grid-cols-2 gap-4 pb-8')}
-          >
-            {TeamMembers.map((member) => (
-              <Avatar key={member.name} member={member} />
-            ))}
-          </ul>
-        </Content>
-      </Layout>
+      <Content className="md:mt-8">
+        <header className="text-center mb-8 md:mb-16">
+          <h1 className="text-xl font-medium mb-2 md:text-3xl">The Team</h1>
+          <p className="text-sm">
+            Just a bunch of hungry, weird pals looking to help planet earth.
+          </p>
+        </header>
+        <ul className={clsx(styles.avatar_list, 'grid grid-cols-2 gap-4 pb-8')}>
+          {TeamMembers.map((member) => (
+            <Avatar key={member.name} member={member} />
+          ))}
+        </ul>
+      </Content>
     </>
   )
 }

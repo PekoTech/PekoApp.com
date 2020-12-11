@@ -1,8 +1,9 @@
-import { useState, ChangeEvent, FormEvent, FocusEvent } from 'react'
-import clsx, { ClassValue } from 'clsx'
+import { useState, ChangeEvent, FormEvent } from 'react'
+import clsx from 'clsx'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 import styles from './NewsletterForm.module.scss'
+import { Input } from '../'
 
 const MailUrl = '/api/mail'
 
@@ -69,7 +70,6 @@ export default function NewsletterForm() {
         <label className={clsx(styles.first, 'mb-4')}>
           First Name
           <Input
-            id="first_name"
             name="first_name"
             type="text"
             placeholder="John"
@@ -82,7 +82,6 @@ export default function NewsletterForm() {
         <label className={clsx(styles.last, 'mb-4')}>
           Last Name
           <Input
-            id="last_name"
             name="last_name"
             type="text"
             placeholder="Smith"
@@ -96,7 +95,6 @@ export default function NewsletterForm() {
           Email
           <Input
             className={styles.input}
-            id="email"
             name="email"
             type="email"
             placeholder="john@example.com"
@@ -158,56 +156,4 @@ function Message({ state, error }: MessageProps) {
       return null
   }
   return <p>{message}</p>
-}
-
-// --
-
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
-  message: string | ((value: string) => string)
-  validator: (value: string) => boolean
-  className?: ClassValue | ClassValue[]
-}
-
-function Input({
-  className = '',
-  message,
-  value,
-  validator,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onBlur = () => {},
-  ...props
-}: InputProps) {
-  const [wasFocused, setWasFocused] = useState(false)
-
-  const isValid = !wasFocused || validator(String(value))
-  const classes = Array.isArray(className) ? className : [className]
-
-  const handleBlur = (evt: FocusEvent<HTMLInputElement>) => {
-    if (!wasFocused) {
-      setWasFocused(true)
-    }
-    onBlur(evt)
-  }
-
-  return (
-    <>
-      <input
-        className={clsx(
-          styles.input,
-          { [styles.invalid]: !isValid },
-          ...classes
-        )}
-        onBlur={handleBlur}
-        {...props}
-      />
-      {!isValid && (
-        <small className={styles.error}>
-          {typeof message === 'function' ? message(String(value)) : message}
-        </small>
-      )}
-    </>
-  )
 }

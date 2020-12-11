@@ -1,0 +1,26 @@
+.submit {
+  @apply py-2 rounded-full;
+  background: var(--color-primary);
+  color: white;
+  width: calc(100% - 2rem);
+  box-shadow: var(--shadow);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  max-width: 25rem;
+}
+
+.form {
+  margin: 0 auto;
+  max-width: 45rem;
+  min-height: 30rem;
+}
+
+.message {
+  flex: 1;
+
+  textarea {
+    flex: 1;
+  }
+}
