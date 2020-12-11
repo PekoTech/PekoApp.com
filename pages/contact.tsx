@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import clsx from 'clsx'
+import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
-import { Content, Input } from '../components'
+import { Button, Content, Input } from '../components'
 import styles from '../styles/Contact.module.scss'
-import clsx from 'clsx'
 
 const contactSchema = yup.object().shape({
   firstName: yup.string().required('Please enter your first name'),
@@ -60,7 +60,7 @@ export default function Contact() {
                 placeholder="Something awesome!"
               />
             </label>
-            <button className={styles.submit}>Submit</button>
+            <Button className={styles.submit}>Submit</Button>
           </Form>
         </Formik>
       </Content>

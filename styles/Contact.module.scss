@@ -1,9 +1,4 @@
 .submit {
-  @apply py-2 rounded-full;
-  background: var(--color-primary);
-  color: white;
-  width: calc(100% - 2rem);
-  box-shadow: var(--shadow);
   position: absolute;
   bottom: 0;
   left: 50%;
