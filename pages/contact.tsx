@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import clsx from 'clsx'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { Button, Content, Input } from '../components'
+import { api, ApiError, ContactMessage } from '../lib/api'
 import styles from '../styles/Contact.module.scss'
+import { ClipLoader } from 'react-spinners'
 
 const contactSchema = yup.object().shape({
   firstName: yup.string().required('Please enter your first name'),
@@ -15,7 +18,28 @@ const contactSchema = yup.object().shape({
   message: yup.string().required('Please enter a message'),
 })
 
+enum FormState {
+  Done,
+  Error,
+  Idle,
+  Invalid,
+  Loading,
+}
+
 export default function Contact() {
+  const [state, setFormState] = useState<FormState>(FormState.Idle)
+  const [error, setError] = useState<ApiError | null>(null)
+
+  const handleSubmit = (info: ContactMessage) => {
+    setFormState(FormState.Loading)
+    api
+      .contact(info)
+      .then(() => setFormState(FormState.Done))
+      .catch(({ status, error }) => {
+        setFormState(FormState.Error)
+        setError({ status, message: error })
+      })
+  }
   return (
     <>
       <Head>
@@ -30,12 +54,12 @@ export default function Contact() {
         </header>
         <Formik
           initialValues={{
-            firstName: '',
+            first_name: '',
             email: '',
             message: '',
           }}
           validationSchema={contactSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={handleSubmit}
         >
           <Form
             className={clsx(
@@ -45,7 +69,7 @@ export default function Contact() {
           >
             <label>
               First name
-              <Input name="firstName" type="text" placeholder="John" />
+              <Input name="first_name" type="text" placeholder="John" />
             </label>
             <label>
               Email
@@ -60,10 +84,41 @@ export default function Contact() {
                 placeholder="Something awesome!"
               />
             </label>
-            <Button className={styles.submit}>Submit</Button>
+            <Button className={styles.submit}>
+              {state === FormState.Loading ? (
+                <ClipLoader size={25} color={'#ffffff'} />
+              ) : (
+                'Submit'
+              )}
+            </Button>
           </Form>
         </Formik>
+        <div className="text-center mt-8">
+          <Message state={state} error={error} />
+        </div>
       </Content>
     </>
   )
+}
+
+// --
+
+type MessageProps = {
+  state: FormState
+  error: ApiError
+}
+
+function Message({ state, error }: MessageProps) {
+  let message = ''
+  switch (state) {
+    case FormState.Error:
+      message = `Something went wrong. ${error.status}: ${error.message}`
+      break
+    case FormState.Done:
+      message = "Thanks! We'll be in touch soon."
+      break
+    default:
+      return null
+  }
+  return <p>{message}</p>
 }
