@@ -77,14 +77,11 @@ export default function Contact() {
               Email
               <Input name="email" type="email" placeholder="john@example.com" />
             </label>
-            <label
-              htmlFor="message"
-              className={clsx(styles.message, 'h-full flex flex-col')}
-            >
+            <label htmlFor="message" className="flex flex-col">
               Message
             </label>
             <Input
-              className="h-full"
+              className="flex-1"
               name="message"
               as="textarea"
               placeholder="Something awesome!"
