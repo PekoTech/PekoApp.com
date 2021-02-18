@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import faunadb from 'faunadb'
 
-const FEEDBACK_INDEX = 'signups_by_email'
 const FEEDBACK_COLLECTION = 'mail'
 
 export default async function subscribe(
@@ -20,14 +19,6 @@ export default async function subscribe(
       return res.status(400).json({
         message: 'Email not provided',
       })
-    }
-
-    const doesDocExist = await client.query(
-      db.Exists(db.Match(db.Index(FEEDBACK_INDEX), email))
-    )
-
-    if (doesDocExist) {
-      return res.status(400).json({ message: 'email exists' })
     }
 
     await client.query(
