@@ -1,24 +1,45 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import pg from 'pg'
+import faunadb from 'faunadb'
+
+const FEEDBACK_INDEX = 'signups_by_email'
+const FEEDBACK_COLLECTION = 'mail'
 
 export default async function subscribe(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email, first_name, last_name } = req.body || {}
-  try {
-    if (req.method === 'POST') {
-      const pool = new pg.Pool()
-      await pool.query(
-        'INSERT INTO leads(email, first_name, last_name) VALUES($1, $2, $3)',
-        [email, first_name, last_name]
-      )
-      await pool.end()
-      return res.status(201).send({ message: 'Thanks!' })
+  if (req.method === 'POST') {
+    const db = faunadb.query
+    const client = new faunadb.Client({
+      secret: process.env.FAUNA_SECRET_KEY,
+    })
+
+    const { email, first_name, last_name } = req.query
+
+    if (!email) {
+      return res.status(400).json({
+        message: 'Email not provided',
+      })
     }
-  } catch (error) {
-    const message =
-      error.code === '23505' ? `Email ${email} already exists.` : error.detail
-    return res.status(400).send({ error: message })
+
+    const doesDocExist = await client.query(
+      db.Exists(db.Match(db.Index(FEEDBACK_INDEX), email))
+    )
+
+    if (doesDocExist) {
+      return res.status(400).json({ message: 'email exists' })
+    }
+
+    await client.query(
+      db.Create(db.Collection(FEEDBACK_COLLECTION), {
+        data: {
+          email,
+          first_name,
+          last_name,
+        },
+      })
+    )
+    return res.status(200).json({ email, first_name, last_name })
   }
+  return res.status(404).end()
 }
