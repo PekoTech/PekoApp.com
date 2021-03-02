@@ -31,12 +31,13 @@ const request = (...args: Parameters<Window['fetch']>) => {
 
 export const api = {
   signup(user: User) {
-    return request(
-      `/api/mail?email=${user.email}&first_name=${user.first_name}&last_name=${user.last_name}`,
-      {
-        method: 'POST',
-      }
-    )
+    return request(`/api/mail`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
   },
   contact(info: ContactMessage) {
     return request(`/api/contact`, {
