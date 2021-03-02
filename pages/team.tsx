@@ -1,50 +1,76 @@
 import { useState } from 'react'
 import clsx from 'clsx'
 import Head from 'next/head'
+import { motion } from 'framer-motion'
 
 import { Content } from '../components'
 import styles from '../styles/Team.module.scss'
 
 const TeamMembers = [
   {
-    name: 'Sang Le',
-    title: 'CEO & Co-Founder',
+    name: 'Sang',
+    title: 'Co-founder & CEO',
     link: 'https://www.linkedin.com/in/sanglethu/',
+    hasAlt: true,
   },
   {
-    name: 'Sandy Co',
-    title: 'Head of Design & Co-Founder',
+    name: 'Arielle',
+    title: 'Co-founder & COO',
+    link: 'https://www.linkedin.com/in/ariellelok/',
+    hasAlt: false,
+    extension: 'png',
+  },
+  {
+    name: 'Sandy',
+    title: 'Co-founder & Head of Design',
     link: 'https://www.linkedin.com/in/sandyklc/',
+    hasAlt: true,
   },
   {
-    name: 'Nanda Syahrasyad',
+    name: 'Nanda',
     title: 'Head of Engineering',
     link: 'https://www.linkedin.com/in/narendrass/',
+    hasAlt: true,
   },
   {
-    name: 'Najla Sekariyanti',
-    title: 'Product Designer',
-    link: 'https://www.linkedin.com/in/najlasekar/',
-  },
-  {
-    name: 'Connor Fong',
-    title: 'Technical Advisor',
+    name: 'Connor',
+    title: 'Technical Consultant',
     link: 'https://www.linkedin.com/in/connor-fong/',
+    hasAlt: true,
   },
   {
-    name: 'Andrew Zulaybar',
+    name: 'Jessica',
     title: 'Software Engineer',
-    link: 'https://www.linkedin.com/in/andrewzulaybar/',
+    link: 'https://www.linkedin.com/in/jessica-huh-2a3ab697/',
+    hasAlt: false,
+    extension: 'png',
   },
   {
-    name: 'Li Ze Choo',
-    title: 'Technical Project Manager',
-    link: 'https://www.linkedin.com/in/lizechoo/',
-  },
-  {
-    name: 'Kyle Mas',
+    name: 'Kyle',
     title: 'Software Engineer',
     link: 'https://www.linkedin.com/in/kylemas/',
+    hasAlt: false,
+    extension: 'png',
+  },
+  {
+    name: 'Jennifer',
+    title: 'Designer',
+    link: 'https://www.linkedin.com/in/jennifer-syn/',
+    hasAlt: false,
+    extension: 'png',
+  },
+  {
+    name: 'Li',
+    title: 'Project Manager',
+    link: 'https://www.linkedin.com/in/lizechoo/',
+    hasAlt: false,
+    extension: 'png',
+  },
+  {
+    name: 'Najla',
+    title: 'Designer',
+    link: 'https://www.linkedin.com/in/najlasekar/',
+    hasAlt: true,
   },
 ] as const
 
@@ -55,8 +81,8 @@ export default function Team() {
         <title>Peko Team</title>
       </Head>
       <Content className="md:mt-8">
-        <header className="text-center mb-8 md:mb-16">
-          <h1 className="text-xl font-medium mb-2 md:text-3xl">The Team</h1>
+        <header className="mb-8 text-center md:mb-16">
+          <h1 className="mb-2 text-xl font-medium md:text-3xl">The Team</h1>
           <p className="text-sm">
             Just a bunch of hungry, weird pals looking to help planet earth.
           </p>
@@ -74,34 +100,45 @@ export default function Team() {
 function Avatar({ member }) {
   const [hover, setHover] = useState(false)
 
-  const nameAsPath = member.name.split(' ').join('_').toLowerCase()
-  const path = `/assets/team/${nameAsPath}`
+  const path = `/assets/team/${member.name}`
   return (
     // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-    <li
+    <motion.li
+      className="relative flex items-start justify-center"
+      initial="idle"
+      whileHover="expand"
       onMouseOver={() => !hover && setHover(true)}
       onMouseOut={() => hover && setHover(false)}
     >
-      <a className="flex flex-col items-center text-center" href={member.link}>
+      <motion.div
+        className="absolute w-32 h-32 bg-green-500 rounded-full md:w-40 md:h-40"
+        variants={{ expand: { scale: 1.1 }, idle: { scale: 1 } }}
+      />
+      <a
+        className="relative flex flex-col items-center text-center"
+        href={member.link}
+        target="_blank"
+        rel="noreferrer"
+      >
         <div
           role="img"
           style={{
-            backgroundImage: `url(${path}.JPG)`,
-            display: hover ? 'none' : 'block',
+            backgroundImage: `url(${path}.${member.extension || 'JPG'})`,
+            display: hover && member.hasAlt ? 'none' : 'block',
           }}
-          className="w-32 h-32 bg-gray-500 rounded-full mb-4 md:w-40 md:h-40 bg-cover bg-center"
+          className="w-32 h-32 mb-4 bg-gray-500 bg-center bg-cover rounded-full md:w-40 md:h-40"
         />
         <div
           role="img"
           style={{
-            backgroundImage: `url(${path}_alt.JPG)`,
-            display: hover ? 'block' : 'none',
+            backgroundImage: `url(${path}_alt.${member.extension || 'JPG'})`,
+            display: hover && member.hasAlt ? 'block' : 'none',
           }}
-          className="w-32 h-32 bg-gray-500 rounded-full mb-4 md:w-40 md:h-40 bg-cover bg-center"
+          className="w-32 h-32 mb-4 bg-gray-500 bg-center bg-cover rounded-full md:w-40 md:h-40"
         />
         <h1 className="font-medium">{member.name}</h1>
         <p className="text-sm italic">{member.title}</p>
       </a>
-    </li>
+    </motion.li>
   )
 }
