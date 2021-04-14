@@ -85,7 +85,7 @@ export default function NewsletterForm() {
           </Form>
         )}
       </Formik>
-      <div className="text-center mt-4">
+      <div className="mt-4 text-center">
         <Message state={state} error={error} />
       </div>
     </>
@@ -106,7 +106,8 @@ function Message({ state, error }: MessageProps) {
       message = `Something went wrong while saving your profile. ${error.status}: ${error.message}`
       break
     case FormState.Done:
-      message = "Thanks! We'll be in touch soon."
+      message =
+        "Thanks! Please check your inbox — we've sent you a confirmation email."
       break
     default:
       return null
