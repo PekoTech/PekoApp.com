@@ -6,21 +6,9 @@ $xl: 1280px;
 }
 
 .content {
-  @media only screen and (min-width: $lg) {
-    grid-template-areas:
-      'head video'
-      'form video';
-    grid-template-columns: 1fr 1fr;
-    column-gap: 4rem;
-    max-width: 75rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media only screen and (min-width: $xl) {
-    grid-template-columns: 2fr 3fr;
-    column-gap: 8rem;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -34,5 +22,7 @@ $xl: 1280px;
 }
 
 .form {
-  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

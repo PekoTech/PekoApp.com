@@ -8,7 +8,5 @@ export default function Content({
   className?: ClassValue
   children: React.ReactNode
 }) {
-  return (
-    <section className={clsx('mt-6 lg:grid', className)}>{children}</section>
-  )
+  return <section className={clsx(className)}>{children}</section>
 }

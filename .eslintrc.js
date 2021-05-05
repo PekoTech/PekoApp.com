@@ -36,6 +36,7 @@ module.exports = {
         depth: 3,
       },
     ],
+    'react/no-unescaped-entities': 'off',
   },
   settings: {
     react: {

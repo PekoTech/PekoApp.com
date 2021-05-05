@@ -10,7 +10,7 @@ export default async function subscribe(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email, first_name, last_name } = req.body || {}
+  const { email, first_name, last_name, postal_code } = req.body || {}
   try {
     if (req.method === 'POST') {
       await client.lists.addListMember(process.env.MAILCHIMP_LIST_ID, {
@@ -19,6 +19,7 @@ export default async function subscribe(
         merge_fields: {
           FNAME: first_name,
           LNAME: last_name,
+          POSTAL: postal_code,
         },
       })
       return res.status(201).json({})
