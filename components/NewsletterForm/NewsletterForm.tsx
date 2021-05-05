@@ -22,6 +22,7 @@ const signupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Please enter a valid email')
     .required('Email is required'),
+  postal_code: Yup.string().required('Postal code is required'),
 })
 
 export default function NewsletterForm() {
@@ -46,12 +47,13 @@ export default function NewsletterForm() {
           first_name: '',
           last_name: '',
           email: '',
+          postal_code: '',
         }}
         validationSchema={signupSchema}
         onSubmit={handleSubmit}
       >
         {(props) => (
-          <Form className={clsx(styles.form, 'lg:grid')}>
+          <Form className={clsx(styles.form, 'lg:grid max-w-3xl')}>
             <label className={clsx(styles.first)}>
               First Name
               <Input name="first_name" type="text" placeholder="John" />
@@ -67,6 +69,15 @@ export default function NewsletterForm() {
                 name="email"
                 type="email"
                 placeholder="john@example.com"
+              />
+            </label>
+            <label className={styles.postal}>
+              Postal Code
+              <Input
+                className={styles.input}
+                name="postal_code"
+                type="text"
+                placeholder="V12 345"
               />
             </label>
             <Button
