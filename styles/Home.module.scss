@@ -6,9 +6,28 @@ $xl: 1280px;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  --spacing: 32px;
+
+  > :first-child {
+    position: relative;
+    padding: var(--spacing);
+    max-width: 80ch;
+    justify-self: center;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    height: 100vh;
+
+    --spacing: 64px;
+  }
+}
+
+.contact {
+  position: absolute;
+  top: 0;
+  right: var(--spacing);
 }
 
 .header {
@@ -21,8 +40,7 @@ $xl: 1280px;
   align-items: center;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.picture {
+  height: 100%;
+  object-fit: cover;
 }
