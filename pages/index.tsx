@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Peko App</title>
+        <title>Peko</title>
       </Head>
       <Content className={styles.content}>
         <div className="space-y-12">
